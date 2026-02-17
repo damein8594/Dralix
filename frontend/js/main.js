@@ -17,12 +17,9 @@ import { saveAllTasks } from "./storage.js";
 import { initializeTasks } from "./data.js";
 
 /* ===== INIT ===== */
-// tasks.sort((a, b) => b.storyPoint - a.storyPoint);
-
 async function init() {
-  await initializeTasks();
-  saveAllTasks();
-  renderTasks();
+  await initializeTasks(); // load from DB
+  renderTasks(); // ✅ don't call saveAllTasks here - no need to re-save what we just loaded
 }
 
 init();
@@ -35,11 +32,9 @@ newTaskBtn.addEventListener("click", () => {
 });
 
 deleteBtn.addEventListener("click", deleteTask);
-
 closeFullCardBtn.addEventListener("click", hideFullCard);
 cancelTaskBtn.addEventListener("click", hideFullCard);
 saveTaskBtn.addEventListener("click", saveTask);
-
 toggleBtn.addEventListener("click", switchTheme);
 
 /* ===== DRAG & DROP ===== */
@@ -47,10 +42,10 @@ toggleBtn.addEventListener("click", switchTheme);
 Object.values(lists).forEach((list) => {
   list.addEventListener("dragover", (e) => e.preventDefault());
 
-  list.addEventListener("drop", (e) => {
+  list.addEventListener("drop", async (e) => {
     const index = e.dataTransfer.getData("text/plain");
     tasks[index].status = list.dataset.status;
-    saveAllTasks();
+    await saveAllTasks(); // ✅ persist status change to DB
     renderTasks();
   });
 });

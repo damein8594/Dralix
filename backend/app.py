@@ -1,20 +1,40 @@
-from flask import Flask
+from flask import Flask, app, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
+
+
+
+
 
 db = SQLAlchemy()       # <-- single db instance
 migrate = Migrate()     # single migrate instance
 
 def create_app():
     app = Flask(__name__)
+
+    load_dotenv()
+
+    user = os.getenv("DB_USER")
+    password = os.getenv("DB_PASS")
+    host = os.getenv("DB_HOST")
+    db_name = os.getenv("DB_NAME")
+
+
     CORS(app, origins=["http://127.0.0.1:5500"])
-    app.secret_key = "os_26"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://tl_S2301348:tl_S2301348@ND-COMPSCI/tl_s2301348_kanban"
-    # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/kanban"
+    app.secret_key = os.getenv("SECRET_KEY", "fallback-dev-key")
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{db_name}"
+
+    print(f"Connecting to: mysql://{user}:{password}@{host}/{db_name}")
+
 
     db.init_app(app)     # <-- bind the single db to app
     migrate.init_app(app, db)
+
+
 
     from routes import register_routes
     register_routes(app, db)

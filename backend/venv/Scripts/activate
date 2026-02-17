@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\damien\OneDrive - Notre Dame Catholic Sixth Form College\.portfolio_programs\Dralix\backend\venv"
+VIRTUAL_ENV="C:\.programming\portfolio_programs\Dralix\backend\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
