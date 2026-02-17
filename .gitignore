@@ -1,6 +1,44 @@
-venv/
-backend/venv/
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE/editor files
+.vscode/
 .idea/
-*.pyc
-*.pyo
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Flask instance folder
+instance/
+
+# Logs
+*.log
+
+# Pytest cache
+.pytest_cache/
+
+# Environment variables
+.env
+.env.*
+
+# SQLite database files
+*.db
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Node / frontend dependencies if any
+node_modules/
+dist/
+build/
