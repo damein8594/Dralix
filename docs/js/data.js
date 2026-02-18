@@ -1,4 +1,4 @@
-import { getFromApi } from "./json.js"; // ✅ was missing before
+import { getFromApi } from "./storageAdapter.js";
 
 export const newTaskBtn = document.querySelector("#newTaskBtn");
 export const deleteBtn = document.getElementById("deleteBtn");
@@ -6,6 +6,7 @@ export const closeFullCardBtn = document.getElementById("closeFullCard");
 export const cancelTaskBtn = document.getElementById("cancelTaskBtn");
 export const saveTaskBtn = document.getElementById("saveTaskBtn");
 export const toggleBtn = document.getElementById("toggleTheme");
+export const storageToggleBtn = document.getElementById("toggleStorage");
 
 export const lists = {
   todo: document.querySelector("#todoList"),

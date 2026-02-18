@@ -3,7 +3,7 @@ import { saveAllTasks } from "./storage.js";
 import { hideFullCard } from "./fullCard.js";
 import { renderTasks } from "./ui.js";
 import { calculateStoryPoint } from "./storyPoint.js";
-import { createTaskInApi, deleteTaskInApi } from "./json.js";
+import { createTaskInApi, deleteTaskInApi } from "./storageAdapter.js";
 
 export async function saveTask() {
   const titleInput = document.getElementById("taskTitleInput");
@@ -47,7 +47,7 @@ export async function deleteTask() {
 
   try {
     await deleteTaskInApi(task.id); // DELETE from DB first
-    changeTasks(task);              // then remove from local array
+    changeTasks(task); // then remove from local array
   } catch (err) {
     console.error("Failed to delete task:", err);
     return;

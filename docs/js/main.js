@@ -5,6 +5,7 @@ import {
   cancelTaskBtn,
   saveTaskBtn,
   toggleBtn,
+  storageToggleBtn,
   lists,
   tasks,
   setActiveIndex,
@@ -12,14 +13,16 @@ import {
 
 import { showFullCard, hideFullCard } from "./fullCard.js";
 import { saveTask, deleteTask } from "./tasks.js";
-import { renderTasks, switchTheme } from "./ui.js";
+import { renderTasks, switchTheme, updateStorageButtonText } from "./ui.js";
 import { saveAllTasks } from "./storage.js";
 import { initializeTasks } from "./data.js";
+import { toggleStorageMode } from "./storageAdapter.js";
 
 /* ===== INIT ===== */
 async function init() {
-  await initializeTasks(); // load from DB
-  renderTasks(); // ✅ don't call saveAllTasks here - no need to re-save what we just loaded
+  await initializeTasks(); // load from DB or localStorage
+  renderTasks();
+  updateStorageButtonText(); // set initial button text
 }
 
 init();
@@ -36,6 +39,7 @@ closeFullCardBtn.addEventListener("click", hideFullCard);
 cancelTaskBtn.addEventListener("click", hideFullCard);
 saveTaskBtn.addEventListener("click", saveTask);
 toggleBtn.addEventListener("click", switchTheme);
+storageToggleBtn.addEventListener("click", toggleStorageMode);
 
 /* ===== DRAG & DROP ===== */
 

@@ -1,9 +1,15 @@
-import { lists, tasks } from "./data.js";
+import { lists, tasks, storageToggleBtn } from "./data.js";
 import { saveAllTasks } from "./storage.js";
 import { showFullCard } from "./fullCard.js";
+import { isUsingLocalStorage } from "./storageAdapter.js";
 
 export function switchTheme() {
   document.body.classList.toggle("dark");
+}
+
+export function updateStorageButtonText() {
+  const mode = isUsingLocalStorage() ? "Local" : "Database";
+  storageToggleBtn.textContent = `Storage: ${mode}`;
 }
 
 function createButtons(task, index) {

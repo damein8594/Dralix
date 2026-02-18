@@ -1,5 +1,5 @@
 import { tasks } from "./data.js";
-import { updateTaskInApi } from "./json.js";
+import { updateTaskInApi } from "./storageAdapter.js";
 
 // Persist all tasks to the DB (used after drag/drop or status changes)
 export async function saveAllTasks() {

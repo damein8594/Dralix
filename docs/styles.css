@@ -101,8 +101,23 @@ body {
   font-size: 1.5rem;
 }
 
-#toggleTheme {
-  font-size: 1rem;
+#toggleTheme,
+#toggleStorage {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+#toggleTheme:hover,
+#toggleStorage:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark #toggleTheme:hover,
+body.dark #toggleStorage:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ================= BOARD ================= */
