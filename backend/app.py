@@ -1,4 +1,4 @@
-from flask import Flask, app, jsonify
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -23,7 +23,11 @@ def create_app():
     db_name = os.getenv("DB_NAME")
 
 
-    CORS(app, origins=["http://127.0.0.1:5500"])
+    CORS(app, origins=[
+    "http://127.0.0.1:5500",         # local dev
+    "https://dralix.damein.space"    # production frontend
+])
+
     app.secret_key = os.getenv("SECRET_KEY", "fallback-dev-key")
 
     app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{db_name}"
