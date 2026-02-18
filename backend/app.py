@@ -27,7 +27,7 @@ def create_app():
 
     app.secret_key = os.getenv("SECRET_KEY", "fallback-dev-key")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg://{user}:{password}@{host}/{db_name}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg://{user}:{password}@{host}/{db_name}?sslmode=require"
 
 
     db.init_app(app)     # <-- bind the single db to app
