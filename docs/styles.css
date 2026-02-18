@@ -468,3 +468,224 @@ body.dark #toggleStorage:hover {
 .card-footer button:hover {
   background: rgba(0, 0, 0, 0.05);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  /* Topbar adjustments */
+  .topbar {
+    padding: 10px;
+  }
+
+  .topbar-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .topbar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    justify-self: start;
+  }
+
+  .topbar-title {
+    font-size: 1rem;
+    position: static;
+    transform: none;
+    text-align: center;
+    justify-self: center;
+    grid-column: 2;
+  }
+
+  .topbar-right {
+    justify-self: end;
+    grid-column: 3;
+  }
+
+  #toggleTheme,
+  #toggleStorage {
+    font-size: 0.6rem;
+    padding: 4px 7px;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+  }
+
+  #newTaskBtn {
+    font-size: 1.6rem;
+    padding: 4px 8px;
+  }
+
+  /* Grid adjustments */
+  .grid-wrapper {
+    padding: 8px;
+  }
+
+  .grid {
+    grid-auto-columns: clamp(280px, 90vw, 400px);
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .column {
+    min-height: calc(100vh - 120px);
+  }
+
+  .column h2 {
+    font-size: 1.1rem;
+    margin: 8px 0 12px;
+  }
+
+  /* Task cards - larger touch targets */
+  .todo,
+  .doing,
+  .done {
+    padding: 12px;
+    min-height: 60px;
+  }
+
+  .card-header-row {
+    padding: 10px 0;
+  }
+
+  .story-point-badge {
+    font-size: 0.8rem;
+  }
+
+  .expandBtn {
+    font-size: 1.4rem;
+    padding: 4px;
+  }
+
+  .backBtn,
+  .nextBtn {
+    font-size: 1.6rem;
+    padding: 4px;
+  }
+
+  /* Full card modal adjustments */
+  .full-Card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .full-Card-Content {
+    width: 100%;
+    max-width: 100%;
+    height: 85vh;
+    flex-shrink: 0;
+    border-radius: 12px;
+  }
+
+  /* Story points panel on mobile - full height, user scrolls down to see it */
+  .full-Card.edit-mode .story-points-panel {
+    position: static;
+    width: 100%;
+    height: 85vh;
+    max-height: none;
+    flex-shrink: 0;
+    border-radius: 12px;
+  }
+
+  /* Ensure inputs are accessible */
+  .card-header {
+    position: relative;
+    z-index: 1;
+  }
+
+  #taskTitleInput {
+    touch-action: manipulation;
+  }
+
+  #taskDescriptionInput {
+    touch-action: manipulation;
+    min-height: 100px;
+  }
+
+  /* Card header mobile adjustments */
+  .card-header {
+    padding: 40px 12px 12px;
+  }
+
+  #fullCardTitle,
+  #taskTitleInput {
+    font-size: 1.1rem;
+  }
+
+  #fullCardStoryPoint,
+  #fullCardId {
+    font-size: 0.75rem;
+  }
+
+  /* Card body mobile adjustments */
+  .card-body {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  /* Card footer - stack buttons on very small screens */
+  .card-footer {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .card-footer button {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  /* Story points panel mobile */
+  .story-points-panel {
+    padding: 16px 12px;
+  }
+
+  .story-points-panel h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .story-points-panel label {
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  .story-points-panel select {
+    padding: 10px 8px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .topbar-title {
+    font-size: 1rem;
+  }
+
+  #toggleTheme,
+  #toggleStorage {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+  }
+
+  .grid {
+    grid-auto-columns: 95vw;
+  }
+
+  .card-footer {
+    flex-wrap: wrap;
+  }
+
+  .card-footer button {
+    min-width: calc(50% - 3px);
+  }
+}
