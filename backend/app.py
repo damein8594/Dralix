@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, app, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -30,9 +30,7 @@ def create_app():
 
     app.secret_key = os.getenv("SECRET_KEY", "fallback-dev-key")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{db_name}"
-
-    print(f"Connecting to: mysql://{user}:{password}@{host}/{db_name}")
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}/{db_name}"
 
 
     db.init_app(app)     # <-- bind the single db to app
