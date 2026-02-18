@@ -6,9 +6,6 @@ from dotenv import load_dotenv
 import os
 
 
-
-
-
 db = SQLAlchemy()       # <-- single db instance
 migrate = Migrate()     # single migrate instance
 
@@ -30,7 +27,7 @@ def create_app():
 
     app.secret_key = os.getenv("SECRET_KEY", "fallback-dev-key")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}/{db_name}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg://{user}:{password}@{host}/{db_name}"
 
 
     db.init_app(app)     # <-- bind the single db to app
